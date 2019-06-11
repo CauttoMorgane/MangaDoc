@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h3>{{ article.title }}</h3>
+                        <p class="card-text">
+                            {{ article.description }}
+                        </p>
+                        <a class="btn btn-success btn-block" href="{{ path('article.show', { 'id' : article.id }) }}">Consulter</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
