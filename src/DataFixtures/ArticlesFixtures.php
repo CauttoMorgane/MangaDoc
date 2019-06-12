@@ -5,9 +5,9 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class ArticlesFixtures extends Fixture
 {
@@ -21,9 +21,8 @@ class ArticlesFixtures extends Fixture
 
         for ($i = 0; $i < 50; $i++){
             $article = new Article();
-            $article
-                ->setTitle($faker->title)
-                ->setDescription($faker->text);
+            $article->setTitle($faker->title)
+                    ->setDescription($faker->text);
             $em->persist($article);
         }
         $em->flush();
