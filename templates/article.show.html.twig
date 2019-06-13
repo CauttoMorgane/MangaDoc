@@ -22,7 +22,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Card One</h2>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Card One</h2>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Card One</h2>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Card One</h2>
@@ -77,12 +77,49 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">{{ article.title }}</h2>
-                    <p class="card-text">
-                        {{ article.description }}
-                    </p>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">PRIX €</h2>
+                            <hr/>
+                            <ul>
+                                <li>mode</li>
+                                <li>de</li>
+                                <li>livraison</li>
+                            </ul>
+
+                            <ul>
+                                <li>TOME</li>
+                                <li>SERIE</li>
+                                <li>AUTEUR</li>
+                                <li>GENRE</li>
+                            </ul>
+
+                            <h5 class="card-title">
+                                {{ article.title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ article.description }}
+                            </p>
+                            <div class="text-center">
+                                <button class="btn btn-block btn-outline-primary">Envoyer un message</button>
+                                <button class="btn btn-block btn-outline-primary">Favoris</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ path('article.show', { 'id' : article.id }) }}" class="card">
+                        <div class="card-body">
+                            <img src="https://via.placeholder.com/80x80" class="rounded" alt="...">
+                            <span class="ml-2">Nom du vendeur</span>
+                            <hr>
+                            <p>Région</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
