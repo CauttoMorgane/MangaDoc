@@ -30,9 +30,10 @@ class UserFixtures extends Fixture
                     ->setFirstname($faker->firstName)
                     ->setLastname($faker->lastName)
                     ->setCity($faker->city)
+                    ->setCountry($faker->country)
                     ->setGender('Femme')
-                    ->setPaymentMethod('Cheque Espece Virement')
-                    ->setUserName('Admin')
+                    ->setPayment('Cheque Espece Virement')
+                    ->setNickname('Admin')
                     ->setPassword($this->passwordEncoder->encodePassword($user, 'admin'))
                     ->setEmail('admin@test.test')
                     ->setRoles(['ROLE_ADMIN']);
@@ -41,11 +42,12 @@ class UserFixtures extends Fixture
                     ->setFirstname($faker->firstName)
                     ->setLastname($faker->lastName)
                     ->setCity($faker->city)
+                    ->setCountry($faker->country)
                     ->setGender('Femme')
-                    ->setPaymentMethod('Cheque Espece Virement')
-                    ->setUserName($faker->name)
+                    ->setPayment('Cheque Espece Virement')
+                    ->setNickname($faker->name)
                     ->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
-                    ->setEmail('user@test.test')
+                    ->setEmail($faker->email)
                     ->setRoles(['ROLE_USER']);
             }
             $em->persist($user);

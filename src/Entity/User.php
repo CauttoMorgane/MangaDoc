@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -59,14 +61,14 @@ class User implements UserInterface
     private $gender;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $payment_method;
+    private $payment;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $user_name;
+    private $nickname;
 
     public function getId(): ?int
     {
@@ -206,21 +208,26 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPaymentMethod(): ?string
+    public function getPayment(): ?string
     {
-        return $this->payment_method;
+        return $this->payment;
     }
 
-    public function setPaymentMethod(string $payment_method): self
+    public function setPayment(string $payment): self
     {
-        $this->payment_method = $payment_method;
+        $this->payment = $payment;
 
         return $this;
     }
 
-    public function setUserName(string $user_name): self
+    public function getNickname(): ?string
     {
-        $this->user_name = $user_name;
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }

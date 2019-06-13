@@ -19,18 +19,19 @@
 
     <div class="row">
         {% for article in articles %}
+            {{ dump(article) }}
             <div class="col-lg-3 col-md-4 pb-3">
                 <a href="{{ path('article.show', { 'id' : article.id }) }}" class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
-                            <span class="ml-2">Nom du vendeur</span>
+                            Nom du vendeur</span>
                         </li>
                     </ul>
                     <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
                          alt="Card image cap">
                     <div class="card-body">
-                        <h4>PRIX €</h4>
+                        <h4>{{ article.price }} €</h4>
                         <p class="card-text text-muted">
                             {{ article.title }} <br/>
                             Intégral

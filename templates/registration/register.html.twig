@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">S'inscrire</h5>
+                        {{ form_start(registrationForm) }}
+                        {{ form_label(registrationForm.gender) }}
+                        {{ form_widget(registrationForm.gender) }}
+                        {{ form_row(registrationForm.gender) }}
+                        {{ form_row(registrationForm.firstname) }}
+                        {{ form_row(registrationForm.lastname) }}
+
+                        {{ form_row(registrationForm.city) }}
+                        {{ form_row(registrationForm.country) }}
+                        <hr/>
+                        {{ form_row(registrationForm.nickname) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.plainPassword) }}
+
+
+                        <button class="btn btn-block btn-primary">Register</button>
+                        {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{#<div class="form-control">#}
+    {#<i class="fa fa-calendar"></i> {{ form_label(form.dueDate) }}#}
+    {#{{ form_widget(form.dueDate) }}#}
+
+    {#<small>{{ form_help(form.dueDate) }}</small>#}
+
+    {#<div class="form-error">#}
+        {#{{ form_errors(form.dueDate) }}#}
+    {#</div>#}
+{#</div>#}

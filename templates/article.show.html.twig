@@ -26,9 +26,10 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni
-                                quas ex
-                                numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam,
+                                maxime minus quam molestias corporis quod, ea minima accusamus.
+                            </p>
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-primary btn-sm">More Info</a>
@@ -81,7 +82,7 @@
                 <div class="col-md-12 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <h2 class="card-title">PRIX €</h2>
+                            <h2 class="card-title">{{ article.price }} €</h2>
                             <hr/>
                             <ul>
                                 <li>mode</li>
@@ -90,10 +91,9 @@
                             </ul>
 
                             <ul>
-                                <li>TOME</li>
-                                <li>SERIE</li>
-                                <li>AUTEUR</li>
-                                <li>GENRE</li>
+                                <li>SERIE : {{ article.title }}</li>
+                                <li>AUTEUR : {{ article.author }}</li>
+                                <li>GENRE: {{ article.genre }}</li>
                             </ul>
 
                             <h5 class="card-title">
