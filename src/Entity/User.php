@@ -33,6 +33,41 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $payment_method;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $user_name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,5 +144,84 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getPaymentMethod(): ?string
+    {
+        return $this->payment_method;
+    }
+
+    public function setPaymentMethod(string $payment_method): self
+    {
+        $this->payment_method = $payment_method;
+
+        return $this;
+    }
+
+    public function setUserName(string $user_name): self
+    {
+        $this->user_name = $user_name;
+
+        return $this;
     }
 }

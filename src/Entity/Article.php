@@ -26,6 +26,36 @@ class Article
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $editor;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $state;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_added;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $id_user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $integral;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +81,78 @@ class Article
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getEditor(): ?string
+    {
+        return $this->editor;
+    }
+
+    public function setEditor(string $editor): self
+    {
+        $this->editor = $editor;
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->date_added;
+    }
+
+    public function setDateAdded(\DateTimeInterface $date_added): self
+    {
+        $this->date_added = $date_added;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->id_user;
+    }
+
+    public function setIdUser(?User $id_user): self
+    {
+        $this->id_user = $id_user;
+
+        return $this;
+    }
+
+    public function getIntegral(): ?bool
+    {
+        return $this->integral;
+    }
+
+    public function setIntegral(bool $integral): self
+    {
+        $this->integral = $integral;
 
         return $this;
     }

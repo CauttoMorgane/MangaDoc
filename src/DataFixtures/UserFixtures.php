@@ -8,6 +8,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker;
 
 class UserFixtures extends Fixture
 {
@@ -20,14 +21,30 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $em)
     {
-        for ($i = 0; $i < 2; $i++) {
+        $faker = Faker\Factory::create('fr_FR');
+
+        for ($i = 0; $i < 10; $i++) {
             $user = new User();
             if ($i == 1) {
-                $user->setPassword($this->passwordEncoder->encodePassword($user, 'admin'))
+                $user
+                    ->setFirstname($faker->firstName)
+                    ->setLastname($faker->lastName)
+                    ->setCity($faker->city)
+                    ->setGender('Femme')
+                    ->setPaymentMethod('Cheque Espece Virement')
+                    ->setUserName('Admin')
+                    ->setPassword($this->passwordEncoder->encodePassword($user, 'admin'))
                     ->setEmail('admin@test.test')
                     ->setRoles(['ROLE_ADMIN']);
             } else {
-                $user->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
+                $user
+                    ->setFirstname($faker->firstName)
+                    ->setLastname($faker->lastName)
+                    ->setCity($faker->city)
+                    ->setGender('Femme')
+                    ->setPaymentMethod('Cheque Espece Virement')
+                    ->setUserName($faker->name)
+                    ->setPassword($this->passwordEncoder->encodePassword($user, 'user'))
                     ->setEmail('user@test.test')
                     ->setRoles(['ROLE_USER']);
             }
