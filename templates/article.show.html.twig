@@ -22,59 +22,29 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam,
-                                maxime minus quam molestias corporis quod, ea minima accusamus.
-                            </p>
+                {% for articleUser in articles %}
+                    {% if articleUser.idUser == article.idUser %}
+                        <div class="col-lg-4 col-md-5 pb-3">
+                            <a href="{{ path('article.show', { 'id' : articleUser.id }) }}" class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
+                                        <span class="ml-2">{{ articleUser.idUser.nickname }}</span>
+                                    </li>
+                                </ul>
+                                <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
+                                     alt="Card image cap">
+                                <div class="card-body">
+                                    <h4>{{ articleUser.price }} €</h4>
+                                    <p class="card-text text-muted">
+                                        {{ articleUser.title }} <br/>
+                                        {% if articleUser.integral %}Intégral{% endif %}
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni
-                                quas ex
-                                numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni
-                                quas ex
-                                numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Card One</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni
-                                quas ex
-                                numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
         <div class="col-md-4">
@@ -85,23 +55,19 @@
                             <h2 class="card-title">{{ article.price }} €</h2>
                             <hr/>
                             <ul>
-                                <li>mode</li>
-                                <li>de</li>
-                                <li>livraison</li>
-                            </ul>
-
-                            <ul>
                                 <li>SERIE : {{ article.title }}</li>
                                 <li>AUTEUR : {{ article.author }}</li>
                                 <li>GENRE: {{ article.genre }}</li>
                             </ul>
-
                             <h5 class="card-title">
                                 {{ article.title }}
                             </h5>
                             <p class="card-text">
                                 {{ article.description }}
                             </p>
+                            <ul>
+                                <li>MODE DE PAIEMENT : {{ article.idUser.payment }}</li>
+                            </ul>
                             <div class="text-center">
                                 <button class="btn btn-block btn-outline-primary">Envoyer un message</button>
                                 <button class="btn btn-block btn-outline-primary">Favoris</button>
@@ -115,9 +81,9 @@
                     <a href="{{ path('article.show', { 'id' : article.id }) }}" class="card">
                         <div class="card-body">
                             <img src="https://via.placeholder.com/80x80" class="rounded" alt="...">
-                            <span class="ml-2">Nom du vendeur</span>
+                            <span class="ml-2">{{ article.idUser.nickname }}</span>
                             <hr>
-                            <p>Région</p>
+                            <p>{{ article.idUser.city }}</p>
                         </div>
                     </a>
                 </div>

@@ -19,13 +19,14 @@
 
     <div class="row">
         {% for article in articles %}
-            {{ dump(article) }}
+            {#{{ dump(article) }}#}
             <div class="col-lg-3 col-md-4 pb-3">
                 <a href="{{ path('article.show', { 'id' : article.id }) }}" class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
-                            Nom du vendeur</span>
+                            <span class="ml-2">
+                                {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                         </li>
                     </ul>
                     <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
@@ -34,7 +35,7 @@
                         <h4>{{ article.price }} €</h4>
                         <p class="card-text text-muted">
                             {{ article.title }} <br/>
-                            Intégral
+                            {% if article.integral %}Intégral{% endif %}
                         </p>
                     </div>
                 </a>

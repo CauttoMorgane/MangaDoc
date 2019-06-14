@@ -47,7 +47,7 @@ class Article
     private $date_added;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
      */
     private $id_user;
 
