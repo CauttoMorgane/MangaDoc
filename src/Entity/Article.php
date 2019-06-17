@@ -46,10 +46,10 @@ class Article
      */
     private $date_added;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
-     */
-    private $id_user;
+//    /**
+//     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
+//     */
+//    private $id_user;
 
     /**
      * @ORM\Column(type="boolean")
@@ -65,6 +65,12 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $genre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="idArticles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idUser;
 
     public function getId(): ?int
     {
@@ -143,17 +149,17 @@ class Article
         return $this;
     }
 
-    public function getIdUser(): ?User
-    {
-        return $this->id_user;
-    }
-
-    public function setIdUser(?User $id_user): self
-    {
-        $this->id_user = $id_user;
-
-        return $this;
-    }
+//    public function getIdUser(): ?User
+//    {
+//        return $this->id_user;
+//    }
+//
+//    public function setIdUser(?User $id_user): self
+//    {
+//        $this->id_user = $id_user;
+//
+//        return $this;
+//    }
 
     public function getIntegral(): ?bool
     {
@@ -187,6 +193,18 @@ class Article
     public function setGenre(?string $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(?User $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }

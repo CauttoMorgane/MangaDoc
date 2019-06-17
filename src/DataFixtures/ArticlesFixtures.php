@@ -26,7 +26,7 @@ class ArticlesFixtures extends Fixture
                 ->setDescription($faker->text)
                 ->setDateAdded($faker->dateTime)
                 ->setIntegral($faker->boolean)
-                ->setPrice($faker->numberBetween([3], [100]))
+                ->setPrice($faker->numberBetween(3, 100))
                 ->setGenre($faker->word);
             $em->persist($article);
         }

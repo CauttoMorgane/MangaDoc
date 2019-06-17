@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -69,6 +71,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $nickname;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="idUser", orphanRemoval=true)
+     */
+    private $idArticles;
+
+    public function __construct()
+    {
+        $this->idArticles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -228,6 +240,37 @@ class User implements UserInterface
     public function setNickname(string $nickname): self
     {
         $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getIdArticles(): Collection
+    {
+        return $this->idArticles;
+    }
+
+    public function addIdArticle(Article $idArticle): self
+    {
+        if (!$this->idArticles->contains($idArticle)) {
+            $this->idArticles[] = $idArticle;
+            $idArticle->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdArticle(Article $idArticle): self
+    {
+        if ($this->idArticles->contains($idArticle)) {
+            $this->idArticles->removeElement($idArticle);
+            // set the owning side to null (unless already changed)
+            if ($idArticle->getIdUser() === $this) {
+                $idArticle->setIdUser(null);
+            }
+        }
 
         return $this;
     }
