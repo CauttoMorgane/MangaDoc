@@ -4,7 +4,6 @@
 
 {% block body %}
 
-
     <div class="row my-5">
         <div class="col-md-8">
             <div class="row">
@@ -75,6 +74,8 @@
                             <div class="text-center">
                                 <button class="btn btn-block btn-outline-primary">Envoyer un message</button>
                                 <button class="btn btn-block btn-outline-primary">Favoris</button>
+                                {{ include('article/_delete_form.html.twig') }}
+                                <a class="btn btn-block btn-outline-primary" href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
                             </div>
                         </div>
                     </div>
@@ -82,7 +83,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
+                    <a href="{{ path('user_show', {'id': article.idUser.id}) }}" class="card">
                         <div class="card-body">
                             <img src="https://via.placeholder.com/80x80" class="rounded" alt="...">
                             <span class="ml-2">{{ article.idUser.nickname }}</span>
@@ -99,48 +100,48 @@
     {#<h1>Article</h1>#}
 
     {#<table class="table">#}
-        {#<tbody>#}
-            {#<tr>#}
-                {#<th>Id</th>#}
-                {#<td>{{ article.id }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Title</th>#}
-                {#<td>{{ article.title }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Description</th>#}
-                {#<td>{{ article.description }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Author</th>#}
-                {#<td>{{ article.author }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Editor</th>#}
-                {#<td>{{ article.editor }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>State</th>#}
-                {#<td>{{ article.state }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Date_added</th>#}
-                {#<td>{{ article.dateAdded ? article.dateAdded|date('Y-m-d H:i:s') : '' }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Integral</th>#}
-                {#<td>{{ article.integral ? 'Yes' : 'No' }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Price</th>#}
-                {#<td>{{ article.price }}</td>#}
-            {#</tr>#}
-            {#<tr>#}
-                {#<th>Genre</th>#}
-                {#<td>{{ article.genre }}</td>#}
-            {#</tr>#}
-        {#</tbody>#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<th>Id</th>#}
+    {#<td>{{ article.id }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Title</th>#}
+    {#<td>{{ article.title }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Description</th>#}
+    {#<td>{{ article.description }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Author</th>#}
+    {#<td>{{ article.author }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Editor</th>#}
+    {#<td>{{ article.editor }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>State</th>#}
+    {#<td>{{ article.state }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Date_added</th>#}
+    {#<td>{{ article.dateAdded ? article.dateAdded|date('Y-m-d H:i:s') : '' }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Integral</th>#}
+    {#<td>{{ article.integral ? 'Yes' : 'No' }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Price</th>#}
+    {#<td>{{ article.price }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Genre</th>#}
+    {#<td>{{ article.genre }}</td>#}
+    {#</tr>#}
+    {#</tbody>#}
     {#</table>#}
 
     {#<a href="{{ path('article_index') }}">back to list</a>#}
