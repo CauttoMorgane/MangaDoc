@@ -15,6 +15,7 @@ class ArticlesFixtures extends Fixture
     public function load(ObjectManager $em)
     {
         $faker = Faker\Factory::create('fr_FR');
+        $userAdmin = $this->getReference('2');
 
         for ($i = 0; $i < 30; $i++) {
             $article = new Article();
@@ -27,10 +28,18 @@ class ArticlesFixtures extends Fixture
                 ->setDateAdded($faker->dateTime)
                 ->setIntegral($faker->boolean)
                 ->setPrice($faker->numberBetween(3, 100))
-                ->setGenre($faker->word);
+                ->setGenre($faker->word)
+                ->setIdUser($userAdmin);;
             $em->persist($article);
         }
         $em->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            UserFixtures::class,
+        );
     }
 
 }

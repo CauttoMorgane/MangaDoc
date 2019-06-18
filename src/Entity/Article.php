@@ -44,7 +44,7 @@ class Article
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_added;
+    private $dateAdded;
 
 //    /**
 //     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EAGER")
@@ -68,7 +68,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="idArticles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idUser;
 
@@ -139,12 +139,12 @@ class Article
 
     public function getDateAdded(): ?\DateTimeInterface
     {
-        return $this->date_added;
+        return $this->dateAdded;
     }
 
-    public function setDateAdded(\DateTimeInterface $date_added): self
+    public function setDateAdded(\DateTimeInterface $dateAdded): self
     {
-        $this->date_added = $date_added;
+        $this->dateAdded = $dateAdded;
 
         return $this;
     }

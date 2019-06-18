@@ -30,17 +30,18 @@
             </div>
         </div>
 
+        {#{{ dump(user.idArticles) }}#}
+
         <div class="col-md-9">
             <div class="row">
                 {% for article in articles %}
-                    {#{% if article.idUser.id == user.id %}#}
                         <div class="col-lg-3 col-md-4 pb-3">
                             <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
                                         <span class="ml-2">
-                                {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
+                                        {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                                     </li>
                                 </ul>
                                 <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
@@ -54,7 +55,6 @@
                                 </div>
                             </a>
                         </div>
-                    {#{% endif %}#}
                 {% else %}
                     <p class="text-center">Aucun article n'a été trouvé</p>
                 {% endfor %}
@@ -63,57 +63,55 @@
     </div>
 
 
-
-
     {#<h1>User</h1>#}
 
     {#<table class="table">#}
-        {#<tbody>#}
-        {#<tr>#}
-            {#<th>Id</th>#}
-            {#<td>{{ user.id }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Email</th>#}
-            {#<td>{{ user.email }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Roles</th>#}
-            {#<td>{{ user.roles ? user.roles|json_encode : '' }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Password</th>#}
-            {#<td>{{ user.password }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Firstname</th>#}
-            {#<td>{{ user.firstname }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Lastname</th>#}
-            {#<td>{{ user.lastname }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>City</th>#}
-            {#<td>{{ user.city }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Country</th>#}
-            {#<td>{{ user.country }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Gender</th>#}
-            {#<td>{{ user.gender }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Payment</th>#}
-            {#<td>{{ user.payment }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Nickname</th>#}
-            {#<td>{{ user.nickname }}</td>#}
-        {#</tr>#}
-        {#</tbody>#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<th>Id</th>#}
+    {#<td>{{ user.id }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Email</th>#}
+    {#<td>{{ user.email }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Roles</th>#}
+    {#<td>{{ user.roles ? user.roles|json_encode : '' }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Password</th>#}
+    {#<td>{{ user.password }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Firstname</th>#}
+    {#<td>{{ user.firstname }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Lastname</th>#}
+    {#<td>{{ user.lastname }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>City</th>#}
+    {#<td>{{ user.city }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Country</th>#}
+    {#<td>{{ user.country }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Gender</th>#}
+    {#<td>{{ user.gender }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Payment</th>#}
+    {#<td>{{ user.payment }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Nickname</th>#}
+    {#<td>{{ user.nickname }}</td>#}
+    {#</tr>#}
+    {#</tbody>#}
     {#</table>#}
 
     {#<a href="{{ path('user_index') }}">back to list</a>#}
