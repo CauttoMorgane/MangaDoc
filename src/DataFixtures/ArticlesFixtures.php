@@ -5,17 +5,26 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ArticlesFixtures extends Fixture
+class ArticlesFixtures extends Fixture implements DependentFixtureInterface
 {
+
+    /**
+     * @var UserRepository
+     */
+    private $repository = null;
 
     public function load(ObjectManager $em)
     {
         $faker = Faker\Factory::create('fr_FR');
-        $userAdmin = $this->getReference('2');
+
+        $user_repository = $em->getRepository(User::class);
 
         for ($i = 0; $i < 30; $i++) {
             $article = new Article();
@@ -29,7 +38,7 @@ class ArticlesFixtures extends Fixture
                 ->setIntegral($faker->boolean)
                 ->setPrice($faker->numberBetween(3, 100))
                 ->setGenre($faker->word)
-                ->setIdUser($userAdmin);;
+                ->setIdUser($user_repository->findRandom());
             $em->persist($article);
         }
         $em->flush();
@@ -41,5 +50,4 @@ class ArticlesFixtures extends Fixture
             UserFixtures::class,
         );
     }
-
 }
