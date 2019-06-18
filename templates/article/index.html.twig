@@ -1,5 +1,9 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
 {% block body %}
+
     <div class="row align-items-center my-5">
         <div class="col-lg-7">
             <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
@@ -21,7 +25,7 @@
         {% for article in articles %}
             {#{{ dump(article) }}#}
             <div class="col-lg-3 col-md-4 pb-3">
-                <a href="{{ path('article.show', { 'id' : article.id }) }}" class="card">
+                <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
@@ -40,7 +44,58 @@
                     </div>
                 </a>
             </div>
+        {% else %}
+           <p class="text-center">Aucun article n'a été trouvé</p>
         {% endfor %}
     </div>
-{% endblock %}
 
+
+    {#<h1>Article index</h1>#}
+{##}
+    {#<table class="table">#}
+        {#<thead>#}
+        {#<tr>#}
+            {#<th>Id</th>#}
+            {#<th>Title</th>#}
+            {#<th>Description</th>#}
+            {#<th>Author</th>#}
+            {#<th>Editor</th>#}
+            {#<th>State</th>#}
+            {#<th>Date_added</th>#}
+            {#<th>Integral</th>#}
+            {#<th>Price</th>#}
+            {#<th>Genre</th>#}
+            {#<th>actions</th>#}
+        {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for article in articles %}#}
+            {#<tr>#}
+                {#<td>{{ article.id }}</td>#}
+                {#<td>{{ article.title }}</td>#}
+                {#<td>{{ article.description }}</td>#}
+                {#<td>{{ article.author }}</td>#}
+                {#<td>{{ article.editor }}</td>#}
+                {#<td>{{ article.state }}</td>#}
+                {#<td>{{ article.dateAdded ? article.dateAdded|date('Y-m-d H:i:s') : '' }}</td>#}
+                {#<td>{{ article.integral ? 'Yes' : 'No' }}</td>#}
+                {#<td>{{ article.price }}</td>#}
+                {#<td>{{ article.genre }}</td>#}
+                {#<td>#}
+                    {#<a href="{{ path('article_show', {'id': article.id}) }}">show</a>#}
+                    {#<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% else %}#}
+            {#<tr>#}
+                {#<td colspan="11">no records found</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
+{##}
+    {#<a href="{{ path('article_new') }}">Create new</a>#}
+
+
+
+{% endblock %}

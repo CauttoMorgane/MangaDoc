@@ -6,6 +6,8 @@ use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
+use App\Entity\User;
+
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
  * @method Article|null findOneBy(array $criteria, array $orderBy = null)
@@ -18,6 +20,23 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
+
+
+    /**
+     * @return Article[] Returns an array of Article linked to the User
+     */
+    function findForUser(User $user)
+    {
+        return $this->createQueryBuilder('a')
+            ->join(User::class, 'u', \Doctrine\ORM\Query\Expr\Join::WITH, 'a.idUser = u.id')
+            ->where('u.id = ' . $user->getId())
+            ->orderBy('a.dateAdded', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
 
     // /**
     //  * @return Article[] Returns an array of Article objects
