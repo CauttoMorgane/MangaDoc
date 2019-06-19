@@ -6,7 +6,7 @@
 
     <div class="row align-items-center my-5">
         <div class="col-lg-7">
-            <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+            <img class="img-fluid rounded mb-4 mb-lg-0" src="http://lorempixel.com/900/400/abstract/" alt="">
         </div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">Business Name or Tagline</h1>
@@ -28,12 +28,12 @@
                 <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
+                            <img src="http://lorempixel.com/35/35/abstract/" class="rounded" alt="...">
                             <span class="ml-2">
                                 {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                         </li>
                     </ul>
-                    <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
+                    <img class="card-img-top" src="http://lorempixel.com/180/100/abstract/"
                          alt="Card image cap">
                     <div class="card-body">
                         <h4>{{ article.price }} €</h4>

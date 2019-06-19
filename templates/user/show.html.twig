@@ -7,7 +7,7 @@
     <div class="row my-5">
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/180x200?text=Photo+Article"
+                <img class="card-img-top" src="http://lorempixel.com/180/200/abstract/"
                      alt="Card image cap">
                 <div class="card-body">
                     <h4 class="text-center">{{ user.nickname }}</h4>
@@ -44,12 +44,12 @@
                         <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
+                                    <img src="http://lorempixel.com/35/35/abstract/" class="rounded" alt="...">
                                     <span class="ml-2">
                                         {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                                 </li>
                             </ul>
-                            <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
+                            <img class="card-img-top" src="http://lorempixel.com/180/100/abstract/"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4>{{ article.price }} €</h4>
