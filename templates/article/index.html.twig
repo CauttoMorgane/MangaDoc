@@ -11,15 +11,15 @@
                 <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <img src="http://lorempixel.com/35/35/abstract/" class="rounded" alt="...">
-                            <span class="ml-2">
+                            <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
+                            <span class="ml-2" style="color: black">
                                 {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                         </li>
                     </ul>
-                    <img class="card-img-top" src="http://lorempixel.com/180/100/abstract/"
+                    <img class="card-img-top" src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG"
                          alt="Card image cap">
                     <div class="card-body">
-                        <h4>{{ article.price }} €</h4>
+                        <h4 style="color:#A80038">{{ article.price }} €</h4>
                         <p class="card-text text-muted">
                             {{ article.title }} <br/>
                             {% if article.integral %}Intégral{% endif %}
