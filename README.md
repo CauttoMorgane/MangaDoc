@@ -6,9 +6,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![Build Status](https://travis-ci.org/Anime-Reviewers-Society/Anime-Reviewers-Society.svg?branch=master)](https://travis-ci.org/Anime-Reviewers-Society/Anime-Reviewers-Society)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b4748e8cdda4996a9c5f0d2cbc1e382)](https://www.codacy.com/app/legars.florian/Anime-Reviewers-Society?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Anime-Reviewers-Society/Anime-Reviewers-Society&amp;utm_campaign=Badge_Grade)
-[![Discord](https://img.shields.io/discord/530659599301345291.svg?logo=discord)](https://discord.gg/Hk3V7JP)
+[![Build Status](https://travis-ci.org/CauttoMorgane/MangaDoc.svg?branch=master)](https://travis-ci.org/CauttoMorgane/MangaDoc)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b4748e8cdda4996a9c5f0d2cbc1e382)](https://app.codacy.com/project/CauttoMorgane/MangaDoc/dashboard)
+[![Discord](https://img.shields.io/discord/530659599301345291.svg?logo=discord)](https://discord.gg/2446zBm)
 
 </p>
 
