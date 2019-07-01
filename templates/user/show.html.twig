@@ -7,7 +7,7 @@
     <div class="row my-5">
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="https://via.placeholder.com/180x200?text=Photo+Article"
+                <img class="card-img-top" src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="100" height="300"
                      alt="Card image cap">
                 <div class="card-body">
                     <h4 class="text-center">{{ user.nickname }}</h4>
@@ -19,12 +19,17 @@
                         <li class="list-group-item">
                             {{ user.payment }}
                         </li>
-                        <li class="list-group-item">
-                            <a href="{{ path('user_edit', {'id': user.id}) }}">Editer mon profil</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{{ path('article_new') }}">Ajouter un article</a>
-                        </li>
+                        {% if app.user and app.user.id == user.id %}
+                            <li class="list-group-item">
+                                <a href="{{ path('user_edit', {'id': user.id}) }}">Editer mon profil</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path('article_new') }}">Ajouter un article</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -35,26 +40,26 @@
         <div class="col-md-9">
             <div class="row">
                 {% for article in articles %}
-                        <div class="col-lg-3 col-md-4 pb-3">
-                            <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <img src="https://via.placeholder.com/35x35" class="rounded" alt="...">
-                                        <span class="ml-2">
+                    <div class="col-lg-3 col-md-4 pb-3">
+                        <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
+                                    <span class="ml-2">
                                         {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
-                                    </li>
-                                </ul>
-                                <img class="card-img-top" src="https://via.placeholder.com/180x100?text=Photo+Article"
-                                     alt="Card image cap">
-                                <div class="card-body">
-                                    <h4>{{ article.price }} €</h4>
-                                    <p class="card-text text-muted">
-                                        {{ article.title }} <br/>
-                                        {% if article.integral %}Intégral{% endif %}
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
+                                </li>
+                            </ul>
+                            <img class="card-img-top" src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4>{{ article.price }} €</h4>
+                                <p class="card-text text-muted">
+                                    {{ article.title }} <br/>
+                                    {% if article.integral %}Intégral{% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
                 {% else %}
                     <p class="text-center">Aucun article n'a été trouvé</p>
                 {% endfor %}

@@ -6,22 +6,23 @@ use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
+            ->add('title' )
             ->add('description')
             ->add('author')
             ->add('editor')
             ->add('state')
-            ->add('date_added')
+            ->add('date_added', DateType::class)
             ->add('integral')
             ->add('price')
             ->add('genre')
-            ->add('id_user')
+//            ->add('id_user')
         ;
     }
 
