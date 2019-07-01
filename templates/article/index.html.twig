@@ -8,21 +8,21 @@
         {% for article in articles %}
             {#{{ dump(article) }}#}
             <div class="col-lg-3 col-md-4 pb-3">
-                <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
+                <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card card-test">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
-                            <span class="ml-2" style="color: black">
+                            <span class="ml-2 nickname">
                                 {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
                         </li>
                     </ul>
-                    <img class="card-img-top" src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG"
+                    <img class="card-img-top" src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
                          alt="Card image cap">
                     <div class="card-body">
-                        <h4 style="color:#A80038">{{ article.price }} €</h4>
+                        <h4>{{ article.price }} €</h4>
                         <p class="card-text text-muted">
                             {{ article.title }} <br/>
-                            {% if article.integral %}Intégral{% endif %}
+                            {% if article.integral %}Intégral{% else %}<span class="text-white">tome</span>{% endif %}
                         </p>
                     </div>
                 </a>
