@@ -8,19 +8,20 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0"
+                         src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg" alt="">
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card text-white bg-secondary my-5 text-center">
-                        <div class="card-body">
-                            <p class="text-white m-0">
-                                AUTRES ARTICLES DU VENDEUR
-                            </p>
-                        </div>
-                    </div>
+            <div class="row my-3">
+                <div class="col-md-4">
+                    <hr class="divider"/>
+                </div>
+                <div class="col-md-4 text-center">
+                    <p class="divider">Autres articles du vendeur</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="divider"/>
                 </div>
             </div>
 
@@ -28,20 +29,22 @@
                 {% for articleUser in articles %}
                     {% if articleUser.idUser == article.idUser %}
                         <div class="col-lg-4 col-md-5 pb-3">
-                            <a href="{{ path('article_show', { 'id' : articleUser.id }) }}" class="card">
+                            <a href="{{ path('article_show', { 'id' : articleUser.id }) }}" class="card card-test">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
-                                        <span class="ml-2">{{ articleUser.idUser.nickname }}</span>
+                                        <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png"
+                                             width="35" height="35" class="rounded" alt="...">
+                                        <span class="ml-2 nickname">{{ articleUser.idUser.nickname }}</span>
                                     </li>
                                 </ul>
-                                <img class="card-img-top" src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG"
+                                <img class="card-img-top"
+                                     src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4>{{ articleUser.price }} €</h4>
                                     <p class="card-text text-muted">
                                         {{ articleUser.title }} <br/>
-                                        {% if articleUser.integral %}Intégral{% endif %}
+                                        {% if articleUser.integral %}Intégral{% else %}<span class="text-white">tome</span>{% endif %}
                                     </p>
                                 </div>
                             </a>
@@ -57,25 +60,25 @@
                         <div class="card-body">
                             <h2 class="card-title">{{ article.price }} €</h2>
                             <hr/>
-                            <ul>
-                                <li>SERIE : {{ article.title }}</li>
-                                <li>AUTEUR : {{ article.author }}</li>
-                                <li>GENRE: {{ article.genre }}</li>
-                            </ul>
+                            <p><i class="fas fa-book mx-2 text-muted"></i> {{ article.title }}</p>
+                            <p><i class="fas fa-user mx-2 text-muted"></i> {{ article.author }}</p>
+                            <p><i class="fas fa-bookmark mx-2 text-muted"></i> {{ article.genre }}</p>
                             <h5 class="card-title">
                                 {{ article.title }}
                             </h5>
                             <p class="card-text">
                                 {{ article.description }}
                             </p>
-                            <ul>
-                                <li>MODE DE PAIEMENT : {{ article.idUser.payment }}</li>
-                            </ul>
+                            <p><i class="fas fa-euro-sign mx-2 text-muted"></i> {{ article.idUser.payment }}
+                            </p>
                             <div class="text-center">
-                                <button class="btn btn-block btn-outline-primary">Envoyer un message</button>
-                                <button class="btn btn-block btn-outline-primary">Favoris</button>
+                                <button class="btn btn-block btn-primary">Envoyer un message</button>
+                                <button class="btn btn-block btn-outline-primary">
+                                    <i class="far fa-heart mr-1"></i> Favoris
+                                </button>
                                 {% if app.user and app.user.id == article.idUser.id %}
-                                    <a class="btn btn-block btn-success" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                                    <a class="btn btn-block btn-success"
+                                       href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
                                     {{ include('article/_delete_form.html.twig') }}
                                 {% endif %}
 
@@ -88,10 +91,11 @@
                 <div class="col-md-12">
                     <a href="{{ path('user_show', {'id': article.idUser.id}) }}" class="card">
                         <div class="card-body">
-                            <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="100" height="100" class="rounded" alt="...">
-                            <span class="ml-2">{{ article.idUser.nickname }}</span>
+                            <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png"
+                                 width="100" height="100" class="rounded" alt="...">
+                            <span class="ml-2 nickname">{{ article.idUser.nickname }}</span>
                             <hr>
-                            <p>{{ article.idUser.city }}</p>
+                            <p><i class="fas fa-map-marker-alt mx-2 text-muted"></i> {{ article.idUser.city }}</p>
                         </div>
                     </a>
                 </div>
