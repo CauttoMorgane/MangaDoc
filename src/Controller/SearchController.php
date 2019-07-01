@@ -6,6 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use src\DataFixtures\ArticleFixtures;
+use src\Entity\Article;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class SearchController extends AbstractController
 {
@@ -21,45 +30,45 @@ class SearchController extends AbstractController
     }
 
     public function searchBar()
-    {
-      //formulaire récupérant la valeur de l'input
-      $form = $this->createFormBuilder(null)
+       {
+           $form = $this->createFormBuilder(null)
+                   ->setAction($this->generateUrl('handle_search'))
+                   ->add("search", TextType::class, [
+                       'attr' => [
+                           'placeholder'   => 'Rechercher un article'
+                       ]
+                   ])
+                   // ->add("entrer", SubmitType::class)
+               ->getForm();
+           return $this->render('search/search.html.twig', [
+               'form' => $form->createView()
+           ]);
+       }
+       /**
+        * @Route("/handleSearch/{_query?}", name="handle_search", methods={"POST", "GET"})
+        */
+       public function handleSearchRequest(Request $request, $_query)
+       {
+           $em = $this->getDoctrine()->getManager();
+           if ($_query)
+           {
+               $data = $em->getRepository(Article::class)->findByFirstName($_query);
+           } else {
+               $data = $em->getRepository(Article::class)->findAll();
+           }
 
-      ->add('Search', TextType::class)
-      // ->add('search', SubmitType::class,[
-      //   'attr' => [
-      //     'class' => 'btn btn-primary'
-      //   ]
-      // ])
-      ->getForm();
+           // setting up the serializer
+           $normalizers = [
+               new ObjectNormalizer()
+           ];
+           $encoders =  [
+               new JsonEncoder()
+           ];
+           $serializer = new Serializer($normalizers, $encoders);
+           $data = $serializer->serialize($data, 'json');
+           return new JsonResponse($data, 200, [], true);
+       }
 
-    return $this->render('search/search.html.twig', [
-      'form' => $form->createView()
-    ]);
-
-    //Fonction permettant la recherche dans la bdd
-
-    $output = '';
-    if(isset($_POST['search'])){
-      $searchq = $POST['search'];
-      $searchq = preg_replace("#[^0-9a-z]#i","", $searchq);
-
-      $query = mysql_query(" SELECT * FROM mangaDoc WHERE user LIKE '%searchq%' OR article LIKE '%searchq%' ") or die("could not find");
-      $count = mysql_num_rows($query);
-      if($count == 0){
-        $output = 'There was no search result';
-      }
-      else{
-        while($row = mysql_fetch_array($query)){
-          $user = $row['user'];
-          $article = $row['article'];
-          $id = $row['id'];
-
-          $output .= '<div>'.$user.''.$article.'<div>';
-        }
-      }
-    }
-    }
 
 
 }
