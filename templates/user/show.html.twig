@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+
+    <div class="row my-5">
+        <div class="col-md-3">
+            <div class="card">
+                <img class="card-img-top" src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="100" height="300"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="text-center">{{ user.nickname }}</h4>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            {{ user.city }}
+                        </li>
+                        <li class="list-group-item">
+                            {{ user.payment }}
+                        </li>
+                        {% if app.user and app.user.id == user.id %}
+                            <li class="list-group-item">
+                                <a href="{{ path('user_edit', {'id': user.id}) }}">Editer mon profil</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path('article_new') }}">Ajouter un article</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {#{{ dump(user.idArticles) }}#}
+
+        <div class="col-md-9">
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-lg-3 col-md-4 pb-3">
+                        <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card card-test">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
+                                    <span class="ml-2 nickname">
+                                        {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
+                                </li>
+                            </ul>
+                            <img class="card-img-top" src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
+                                 alt="Card image cap">
+                            <div class="card-body">
+                                <h4>{{ article.price }} €</h4>
+                                <p class="card-text text-muted">
+                                    {{ article.title }} <br/>
+                                    {% if article.integral %}Intégral{% else %}<span class="text-white">tome</span>{% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                {% else %}
+                    <p class="text-center">Aucun article n'a été trouvé</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    {#<h1>User</h1>#}
+
+    {#<table class="table">#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<th>Id</th>#}
+    {#<td>{{ user.id }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Email</th>#}
+    {#<td>{{ user.email }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Roles</th>#}
+    {#<td>{{ user.roles ? user.roles|json_encode : '' }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Password</th>#}
+    {#<td>{{ user.password }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Firstname</th>#}
+    {#<td>{{ user.firstname }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Lastname</th>#}
+    {#<td>{{ user.lastname }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>City</th>#}
+    {#<td>{{ user.city }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Country</th>#}
+    {#<td>{{ user.country }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Gender</th>#}
+    {#<td>{{ user.gender }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Payment</th>#}
+    {#<td>{{ user.payment }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+    {#<th>Nickname</th>#}
+    {#<td>{{ user.nickname }}</td>#}
+    {#</tr>#}
+    {#</tbody>#}
+    {#</table>#}
+
+    {#<a href="{{ path('user_index') }}">back to list</a>#}
+
+    {#<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>#}
+
+    {#{{ include('user/_delete_form.html.twig') }}#}
+{% endblock %}
