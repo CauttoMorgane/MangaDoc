@@ -21,7 +21,16 @@ class ArticleType extends AbstractType
             ->add('author')
             ->add('editor')
             ->add('state')
-            ->add('date_added', DateType::class)
+            ->add('state', ChoiceType::class,[
+                'choices' => [
+                    'Excellent' => 'Excellent',
+                    'Trés bon' => 'Trés bon',
+                    'Bon' => 'Bon',
+                    'Moyen' => 'Moyen',
+                    'Abimé' => 'Abimé',
+                ]
+            ])
+//            ->add('date_added', DateType::class)
             ->add('integral',CheckboxType::class, array('required' => false))
             ->add('price')
             ->add('genre')
