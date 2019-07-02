@@ -1,6 +1,6 @@
 <p align="center">
 
-<h1 align="center">MangaDoc</h1>
+<h1 align="center" style="color:#A80038">MangaDoc</h1>
 <h4 align="center">A website that allows you to sell or trade your mangas</h4>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
