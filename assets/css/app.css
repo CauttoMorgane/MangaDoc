@@ -16,10 +16,6 @@ a {
     text-decoration: none !important;
 }
 
-i {
-    color: #A80038;
-}
-
 .card-test:hover {
     border: 1px dotted #A80038;
     border-radius: 5px;

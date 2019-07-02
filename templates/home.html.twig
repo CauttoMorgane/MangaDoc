@@ -19,25 +19,27 @@
                 Vendez, échangez , achetez !
             </p>
             <p class="text-center">
-                <a class="btn btn-primary" href="{{ path('app_login') }}">Commencer à vendre !</a>
+                {% if app.user %}
+                    <a class="btn btn-primary" href="{{ path('user_show', {'id': app.user.id}) }}">
+                        Commencer à vendre !
+                    </a>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ path('app_login') }}">Commencer à vendre !</a>
+                {% endif %}
             </p>
         </div>
     </div>
 
     <div class="row">
         {% for article in articles %}
-            {#{{ dump(article) }}#}
             <div class="col-lg-3 col-md-4 pb-3">
-
-                <a href="{{ path('article_show', { 'id' : article.id }) }}">Test</a>
 
                 <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card card-test">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png"
                                  width="35" height="35" class="rounded" alt="...">
-                            <span class="ml-2 nickname">
-                                {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
+                            <span class="ml-2 nickname">{{ article.idUser.nickname }}</span>
                         </li>
                     </ul>
                     <img class="card-img-top" src="{{ article.imageUrl }}"

@@ -14,10 +14,10 @@
 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            {{ user.city }}
+                            <i class="fas fa-map-marker-alt mx-2 text-muted"></i> {{ user.city }}
                         </li>
                         <li class="list-group-item">
-                            {{ user.payment }}
+                            <i class="fas fa-euro-sign mx-2 text-muted"></i> {{ user.payment }}
                         </li>
                         {% if app.user and app.user.id == user.id %}
                             <li class="list-group-item">
@@ -35,8 +35,6 @@
             </div>
         </div>
 
-        {#{{ dump(user.idArticles) }}#}
-
         <div class="col-md-9">
             <div class="row">
                 {% for article in articles %}
@@ -45,11 +43,10 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
                                     <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png" width="35" height="35" class="rounded" alt="...">
-                                    <span class="ml-2 nickname">
-                                        {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
+                                    <span class="ml-2 nickname">{{ article.idUser.nickname }}</span>
                                 </li>
                             </ul>
-                            <img class="card-img-top" src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
+                            <img class="card-img-top" src="{{ article.imageUrl }}"
                                  alt="Card image cap">
                             <div class="card-body">
                                 <h4>{{ article.price }} €</h4>

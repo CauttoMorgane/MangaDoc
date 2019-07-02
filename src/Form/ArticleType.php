@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 
 class ArticleType extends AbstractType
@@ -21,7 +22,7 @@ class ArticleType extends AbstractType
             ->add('editor')
             ->add('state')
             ->add('date_added', DateType::class)
-            ->add('integral')
+            ->add('integral',CheckboxType::class, array('required' => false))
             ->add('price')
             ->add('genre')
             ->add('genre', ChoiceType::class,[
