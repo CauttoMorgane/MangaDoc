@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class ArticleType extends AbstractType
 {
@@ -22,6 +24,15 @@ class ArticleType extends AbstractType
             ->add('integral')
             ->add('price')
             ->add('genre')
+            ->add('genre', ChoiceType::class,[
+                'choices' => [
+                    'Shojo' => 'Shojo',
+                    'Shonen' => 'Shonen',
+                    'Seinen' => 'Seinen',
+                    'Josei' => 'Josei',
+                    'Sempai' => 'Sempai',
+                ]
+            ])
 //            ->add('id_user')
         ;
     }
