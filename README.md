@@ -30,6 +30,8 @@ If you don't have make (or don't want to download it)
 # Execute in order these commands
 composer install
 npm install
+yarn install
+yarn encore dev --watch
 
 php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
