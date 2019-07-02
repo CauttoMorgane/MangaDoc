@@ -73,9 +73,9 @@ class Article
     private $idUser;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
-    private $image_url;
+    private $imageUrl;
 
     public function getId(): ?int
     {
@@ -216,12 +216,12 @@ class Article
 
     public function getImageUrl(): ?string
     {
-        return $this->image_url;
+        return $this->imageUrl;
     }
 
-    public function setImageUrl(string $image_url): self
+    public function setImageUrl(string $imageUrl): self
     {
-        $this->image_url = $image_url;
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
