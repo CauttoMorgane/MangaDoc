@@ -1,5 +1,82 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {#{{ form_widget(form) }}#}
+
+<div class="form-group row">
+    {{ form_label(form.gender, "Genre", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.gender) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.firstname, "Prénom", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.firstname) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.lastname, "Nom", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.lastname) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.city, "Ville", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.city) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.country, "Pays", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.country) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.payment, "Moyen de payment accépté", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.payment) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.payment, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<hr/>
+<div class="form-group row">
+    {{ form_label(form.nickname, "Pseudo", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.nickname) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.nickname, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.email, "Email", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.email) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group row">
+    {{ form_label(form.password, "Mot de passe", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+    {{ form_errors(form.password) }}
+
+    <div class="col-sm-12">
+        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+
+
 <div class="form-group row">
     <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">Photo</label>
     <div class="col-sm-10">
