@@ -28,7 +28,7 @@ class UserType extends AbstractType
             ->add('country')
             ->add('payment')
             ->add('email')
-            ->add('password', PasswordType::class)
+//            ->add('password', PasswordType::class, array('required' => false) )
         ;
     }
 
