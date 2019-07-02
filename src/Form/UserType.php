@@ -17,8 +17,8 @@ class UserType extends AbstractType
 //            ->add('roles')
             ->add('gender', ChoiceType::class,[
                 'choices' => [
-                    'Male' => 'm',
-                    'Female' => 'f',
+                    'Femme' => 'F',
+                    'Homme' => 'M',
                 ]
             ])
             ->add('firstname')
@@ -28,7 +28,7 @@ class UserType extends AbstractType
             ->add('country')
             ->add('payment')
             ->add('email')
-            ->add('password', PasswordType::class)
+//            ->add('password', PasswordType::class, array('required' => false) )
         ;
     }
 

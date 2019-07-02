@@ -8,8 +8,7 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img class="img-fluid rounded mb-4 mb-lg-0"
-                         src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{{ article.imageUrl }}" alt="...">
                 </div>
             </div>
 
@@ -37,14 +36,13 @@
                                         <span class="ml-2 nickname">{{ articleUser.idUser.nickname }}</span>
                                     </li>
                                 </ul>
-                                <img class="card-img-top"
-                                     src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
+                                <img class="card-img-top" src="{{ articleUser.imageUrl }}"
                                      alt="Card image cap">
                                 <div class="card-body">
                                     <h4>{{ articleUser.price }} €</h4>
                                     <p class="card-text text-muted">
                                         {{ articleUser.title }} <br/>
-                                        {% if articleUser.integral %}Intégral{% else %}<span class="text-white">tome</span>{% endif %}
+                                        {% if articleUser.integral %}Intégral{% endif %}
                                     </p>
                                 </div>
                             </a>
@@ -56,7 +54,7 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <div class="card">
+                    <div class="card card-test">
                         <div class="card-body">
                             <h2 class="card-title">{{ article.price }} €</h2>
                             <hr/>
@@ -69,13 +67,12 @@
                             <p class="card-text">
                                 {{ article.description }}
                             </p>
-                            <p><i class="fas fa-euro-sign mx-2 text-muted"></i> {{ article.idUser.payment }}
+                            <p>
+                                <i class="fas fa-euro-sign mx-2 text-muted"></i> {{ article.idUser.payment }}
                             </p>
                             <div class="text-center">
                                 <button class="btn btn-block btn-primary">Envoyer un message</button>
-                                <button class="btn btn-block btn-outline-primary">
-                                    <i class="far fa-heart mr-1"></i> Favoris
-                                </button>
+                                <button class="btn btn-block btn-outline-primary"><i class="far fa-heart"></i> Favoris</button>
                                 {% if app.user and app.user.id == article.idUser.id %}
                                     <a class="btn btn-block btn-success"
                                        href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
@@ -89,71 +86,20 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="{{ path('user_show', {'id': article.idUser.id}) }}" class="card">
+                    <a href="{{ path('user_show', {'id': article.idUser.id}) }}" class="card card-test">
                         <div class="card-body">
                             <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png"
                                  width="100" height="100" class="rounded" alt="...">
                             <span class="ml-2 nickname">{{ article.idUser.nickname }}</span>
                             <hr>
-                            <p><i class="fas fa-map-marker-alt mx-2 text-muted"></i> {{ article.idUser.city }}</p>
+                            <p>
+                                <i class="fas fa-map-marker-alt mx-2 text-muted"></i>
+                                {{ article.idUser.city }}, {{ article.idUser.country }}
+                            </p>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
-
-    {#<h1>Article</h1>#}
-
-    {#<table class="table">#}
-    {#<tbody>#}
-    {#<tr>#}
-    {#<th>Id</th>#}
-    {#<td>{{ article.id }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Title</th>#}
-    {#<td>{{ article.title }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Description</th>#}
-    {#<td>{{ article.description }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Author</th>#}
-    {#<td>{{ article.author }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Editor</th>#}
-    {#<td>{{ article.editor }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>State</th>#}
-    {#<td>{{ article.state }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Date_added</th>#}
-    {#<td>{{ article.dateAdded ? article.dateAdded|date('Y-m-d H:i:s') : '' }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Integral</th>#}
-    {#<td>{{ article.integral ? 'Yes' : 'No' }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Price</th>#}
-    {#<td>{{ article.price }}</td>#}
-    {#</tr>#}
-    {#<tr>#}
-    {#<th>Genre</th>#}
-    {#<td>{{ article.genre }}</td>#}
-    {#</tr>#}
-    {#</tbody>#}
-    {#</table>#}
-
-    {#<a href="{{ path('article_index') }}">back to list</a>#}
-
-    {#<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
-
-    {#{{ include('article/_delete_form.html.twig') }}#}
 {% endblock %}

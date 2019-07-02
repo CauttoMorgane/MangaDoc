@@ -8,34 +8,78 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-center">S'inscrire</h5>
-                        {{ form_start(registrationForm) }}
-                        {{ form_row(registrationForm.gender) }}
-                        {{ form_row(registrationForm.gender) }}
-                        {{ form_row(registrationForm.firstname) }}
-                        {{ form_row(registrationForm.lastname) }}
+                    {{ form_start(registrationForm) }}
 
-                        {{ form_row(registrationForm.city) }}
-                        {{ form_row(registrationForm.country) }}
-                        <hr/>
-                        {{ form_row(registrationForm.nickname) }}
-                        {{ form_row(registrationForm.email) }}
-                        {{ form_row(registrationForm.plainPassword) }}
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.gender, "Genre", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.gender) }}
 
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.gender, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.firstname, "Prénom", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.firstname) }}
 
-                        <button class="btn btn-block btn-success">S'inscrire</button>
-                        {{ form_end(registrationForm) }}
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.lastname, "Nom", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.lastname) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.city, "Ville", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.city) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.city, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.country, "Pays", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.country) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.country, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.nickname, "Pseudo", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.nickname) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.nickname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.email, "Email", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.email) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        {{ form_label(registrationForm.plainPassword, "Mot de passe", {'label_attr': {'class': 'col-sm-12 control-label'}}) }}
+                        {{ form_errors(registrationForm.plainPassword) }}
+
+                        <div class="col-sm-12">
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <button class="btn btn-block btn-success">S'inscrire</button>
+                    {{ form_end(registrationForm) }}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
-{#<div class="form-control">#}
-    {#<i class="fa fa-calendar"></i> {{ form_label(form.dueDate) }}#}
-    {#{{ form_widget(form.dueDate) }}#}
-
-    {#<small>{{ form_help(form.dueDate) }}</small>#}
-
-    {#<div class="form-error">#}
-        {#{{ form_errors(form.dueDate) }}#}
-    {#</div>#}
-{#</div>#}

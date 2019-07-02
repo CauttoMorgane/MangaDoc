@@ -8,7 +8,7 @@
         <div class="col-lg-7 text-center">
             <p>
                 <img class="img-fluid rounded mb-4 mb-lg-0"
-                    src="https://static.lpnt.fr/images/2015/03/11/mangas-livres-lepoint-3121119-jpg_2759791_660x281.JPG" alt="">
+                     src="https://static.lpnt.fr/images/2012/03/15/manga-paris-529668-jpg_361246_660x281.JPG" alt="">
             </p>
         </div>
         <div class="col-lg-5">
@@ -19,35 +19,36 @@
                 Vendez, échangez , achetez !
             </p>
             <p class="text-center">
-                <a class="btn btn-primary" href="{{ path('app_login') }}">Commencer à vendre !</a>
+                {% if app.user %}
+                    <a class="btn btn-primary" href="{{ path('user_show', {'id': app.user.id}) }}">
+                        Commencer à vendre !
+                    </a>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ path('app_login') }}">Commencer à vendre !</a>
+                {% endif %}
             </p>
         </div>
     </div>
 
     <div class="row">
         {% for article in articles %}
-            {#{{ dump(article) }}#}
             <div class="col-lg-3 col-md-4 pb-3">
 
-                <a href="{{ path('article_show', { 'id' : article.id }) }}">Test</a>
-
-                <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card">
+                <a href="{{ path('article_show', { 'id' : article.id }) }}" class="card card-test">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img src="https://b.kisscc0.com/20180817/xkw/kisscc0-suit-2-avatar-female-computer-icons-woman-female-avatar-5-5b7789aa1aa417.1067936215345606821091.png"
                                  width="35" height="35" class="rounded" alt="...">
-                            <span class="ml-2 nickname">
-                                {% if article.idUser %}{{ article.idUser.nickname }}{% else %}Nom du vendeur{% endif %}</span>
+                            <span class="ml-2 nickname">{{ article.idUser.nickname }}</span>
                         </li>
                     </ul>
-                    <img class="card-img-top"
-                         src="https://media.paruvendu.fr/image/livre-manga/WB15/3/9/WB153983204_1.jpeg"
+                    <img class="card-img-top" src="{{ article.imageUrl }}"
                          alt="Card image cap">
                     <div class="card-body">
                         <h4>{{ article.price }} €</h4>
                         <p class="card-text text-muted">
                             {{ article.title }} <br/>
-                            {% if article.integral %}Intégral{% else %}<span class="text-white">tome</span>{% endif %}
+                            {% if article.integral %}Intégral{% endif %}
                         </p>
                     </div>
                 </a>
@@ -56,54 +57,5 @@
             <p class="text-center">Aucun article n'a été trouvé</p>
         {% endfor %}
     </div>
-
-
-    {#<h1>Article index</h1>#}
-    {##}
-    {#<table class="table">#}
-    {#<thead>#}
-    {#<tr>#}
-    {#<th>Id</th>#}
-    {#<th>Title</th>#}
-    {#<th>Description</th>#}
-    {#<th>Author</th>#}
-    {#<th>Editor</th>#}
-    {#<th>State</th>#}
-    {#<th>Date_added</th>#}
-    {#<th>Integral</th>#}
-    {#<th>Price</th>#}
-    {#<th>Genre</th>#}
-    {#<th>actions</th>#}
-    {#</tr>#}
-    {#</thead>#}
-    {#<tbody>#}
-    {#{% for article in articles %}#}
-    {#<tr>#}
-    {#<td>{{ article.id }}</td>#}
-    {#<td>{{ article.title }}</td>#}
-    {#<td>{{ article.description }}</td>#}
-    {#<td>{{ article.author }}</td>#}
-    {#<td>{{ article.editor }}</td>#}
-    {#<td>{{ article.state }}</td>#}
-    {#<td>{{ article.dateAdded ? article.dateAdded|date('Y-m-d H:i:s') : '' }}</td>#}
-    {#<td>{{ article.integral ? 'Yes' : 'No' }}</td>#}
-    {#<td>{{ article.price }}</td>#}
-    {#<td>{{ article.genre }}</td>#}
-    {#<td>#}
-    {#<a href="{{ path('article_show', {'id': article.id}) }}">show</a>#}
-    {#<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>#}
-    {#</td>#}
-    {#</tr>#}
-    {#{% else %}#}
-    {#<tr>#}
-    {#<td colspan="11">no records found</td>#}
-    {#</tr>#}
-    {#{% endfor %}#}
-    {#</tbody>#}
-    {#</table>#}
-    {##}
-    {#<a href="{{ path('article_new') }}">Create new</a>#}
-
-
 
 {% endblock %}

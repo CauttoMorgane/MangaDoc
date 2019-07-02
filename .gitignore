@@ -36,3 +36,5 @@ yarn-error.log
 bower_components/jquery/
 
 bower_components/typeahead\.js/
+
+/public/images
