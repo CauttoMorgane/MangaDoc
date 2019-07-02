@@ -44,5 +44,4 @@ Let's go !
 This project is under [MIT License](https://choosealicense.com/licenses/mit/)
 
 ## Collaborators
-<span>CauttoMorgane</span>](https://github.com/CauttoMorgane) | 
-<span>VibitaS</span>](https://github.com/VibitaS)
+<a href="https://github.com/CauttoMorgane"><b>CauttoMorgane</b></a> | <a href="https://github.com/VibitaS"><b>VibitaS</b></a>
