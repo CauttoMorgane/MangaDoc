@@ -1,0 +1,57 @@
+body {
+    background-color: #F3EFF1;
+}
+
+.navbar {
+    background: white !important;
+    margin-bottom: 10px;
+}
+
+h4, h2 {
+    color: #A80038;
+}
+
+a {
+    color: #A80038;
+    text-decoration: none !important;
+}
+
+i {
+    color: #A80038;
+}
+
+.card-test:hover {
+    border: 1px dotted #A80038;
+    border-radius: 5px;
+}
+
+.nickname {
+    color: black;
+}
+
+.divider {
+    color: #A80038;
+    border-color: #A80038 !important;
+}
+
+.btn-outline-primary {
+    color: #A80038;
+    background-color: transparent;
+    background-image: none;
+    border-color: #A80038;
+}
+
+.btn-outline-primary:hover {
+    background-color: #A80038;
+    border-color: #A80038;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #A80038;
+    border-color: #A80038;
+}
+
+.btn-primary:hover {
+    background-color: #a02949;
+}
