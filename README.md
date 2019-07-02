@@ -13,7 +13,7 @@
 </p>
 
 ## Pre-requirements
-You will need Docker to build the application, find more informations on [the docker installation documentation](https://docs.docker.com/install/)
+If you will need Docker to build the application, find more informations on [the docker installation documentation](https://docs.docker.com/install/)
 
 ## Contributing
 To contribute :
