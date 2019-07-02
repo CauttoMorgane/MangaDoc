@@ -1,6 +1,6 @@
 <p align="center">
 
-<h1 align="center">MangaDoc</h1>
+<h1 align="center" style="color:#A80038">MangaDoc</h1>
 <h4 align="center">A website that allows you to sell or trade your mangas</h4>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -13,7 +13,7 @@
 </p>
 
 ## Pre-requirements
-You will need Docker to build the application, find more informations on [the docker installation documentation](https://docs.docker.com/install/)
+If you will need Docker to build the application, find more informations on [the docker installation documentation](https://docs.docker.com/install/)
 
 ## Contributing
 To contribute :
@@ -44,5 +44,4 @@ Let's go !
 This project is under [MIT License](https://choosealicense.com/licenses/mit/)
 
 ## Collaborators
-<span>CauttoMorgane</span>](https://github.com/CauttoMorgane) | 
-<span>VibitaS</span>](https://github.com/VibitaS)
+<a href="https://github.com/CauttoMorgane"><b>CauttoMorgane</b></a> | <a href="https://github.com/VibitaS"><b>VibitaS</b></a>
