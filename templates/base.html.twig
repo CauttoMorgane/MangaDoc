@@ -65,60 +65,6 @@
 <div class="container-fluid">
     {% block body %}{% endblock %}
 </div>
-{% block javascripts %}
-
-    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../node_modules/jquery/dist/typeahead.bundle.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function (){
-            var articles = new Bloodhound(
-                {
-                    datumTokenizer: Bloodhound.tokenizers.whitespace,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-                    remote: {
-                        url: "{{ path('search') }}/%QUERY%",
-                        wildcard: '%QUERY%',
-                        filter: function(articles)
-                        {
-                            return $.map(articles, function(article)
-                            {
-                                return {
-                                    article_id : article.id,
-                                    article_title : article.title
-                                }
-                            })
-                        }
-                    }
-                })
-            articles.initialize();
-            $('#search').typeahead(
-                {
-                    hint:true
-                },
-                {
-                    name:'article',
-                    source: articles.ttAdapter(),
-                    display: 'article_title',
-                    templates: {
-                        suggestion: function(data)
-                        {
-                            return `
-                <a href='{{ path('article_index') }}//`data+article.id+`'>
-                  <strong>`+data.article_id+`</strong>
-                  <span>`+data.article_title+`</span>
-                </a>
-                `
-                        },
-                        footer: function (query)
-                        {
-                            return '<div class="text-center">More results about: '+ query.query +'</div>'
-                        }
-                    }
-                })
-        })
-    </script>
-
-{% endblock %}
+{% block javascripts %}{% endblock %}
 </body>
 </html>
