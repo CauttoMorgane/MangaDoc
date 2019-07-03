@@ -21,6 +21,7 @@ class ArticleController extends AbstractController
      */
     public function home(ArticleRepository $articleRepository): Response
     {
+
         return $this->render('home.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
@@ -29,10 +30,12 @@ class ArticleController extends AbstractController
     /**
      * @Route("/article", name="article_index", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(Request $request, ArticleRepository $articleRepository): Response
     {
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
+            'articles' => $request->query->has('search')
+                ? $articleRepository->findByTitle($request->query->get('search'))
+                : $articleRepository->findAll(),
         ]);
     }
 
