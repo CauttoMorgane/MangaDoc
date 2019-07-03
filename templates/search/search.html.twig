@@ -1,4 +1,17 @@
-{{ form(form) }}
+{{ form_start(form) }}
+
+<div class="form-group row">
+    <div class="input-group mb-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-search"></i></div>
+        </div>
+        {{ form_widget(form.search, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+{{ form_end(form) }}
+
+
 
 {% block javascripts %}
 
