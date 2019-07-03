@@ -71,8 +71,12 @@
                                 <i class="fas fa-euro-sign mx-2 text-muted"></i> {{ article.idUser.payment }}
                             </p>
                             <div class="text-center">
-                                <button class="btn btn-block btn-primary">Envoyer un message</button>
-                                <button class="btn btn-block btn-outline-primary"><i class="far fa-heart"></i> Favoris</button>
+                                <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Contacter le vendeur
+                                </button>
+                                {#<button class="btn btn-block btn-outline-primary"><i class="far fa-heart"></i> #}
+                                    {#Favoris#}
+                                {#</button>#}
                                 {% if app.user and app.user.id == article.idUser.id %}
                                     <a class="btn btn-block btn-success"
                                        href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
@@ -102,4 +106,39 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ article.idUser.nickname }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> <i class="fas fa-phone mx-2 text-muted"></i> <a href="tel:0616713876">06 16 71 38 76</a> </p>
+                    <p> <i class="far fa-envelope mx-2 text-muted"></i> <a href="mailto:{{ article.idUser.email }}">{{ article.idUser.email }}</a> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
+
+{#{% block javascripts %}#}
+
+    {#<script type="text/javascript">#}
+        {#$(document).ready(function() {#}
+            {#$('#myModal').on('shown.bs.modal', function() {#}
+                {#$('#myInput').trigger('focus')#}
+            {#})#}
+        {#})#}
+    {#</script>#}
+{#{% endblock %}#}
