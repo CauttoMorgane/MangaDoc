@@ -12,8 +12,9 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}"/>
     {% endblock %}
     {% block head_js %}
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        <script
+                src="http://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
                 crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
                 integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -32,17 +33,18 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="{{ path('article_index') }}" style="color:#A80038; font-style: italic;">MangaDoc</a>
+        <a class="navbar-brand" href="{{ path('article_index') }}"
+           style="color:#A80038; font-style: italic;">MangaDoc</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ path('article_index') }}">Articles<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ path('article_index') }}">Articles<span
+                            class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0 search-large">
+        <form class="form-inline my-2 my-lg-0">
             {{ render(controller(
-              'App\\Controller\\SearchController::searchBar'
-              ))
-            }}
+                'App\\Controller\\SearchController::searchBar'
+            )) }}
         </form>
         {% if app.user %}
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -66,59 +68,6 @@
     {% block body %}{% endblock %}
 </div>
 {% block javascripts %}
-
-    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../node_modules/jquery/dist/typeahead.bundle.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function (){
-            var articles = new Bloodhound(
-                {
-                    datumTokenizer: Bloodhound.tokenizers.whitespace,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-
-                    remote: {
-                        url: "{{ path('search') }}/%QUERY%",
-                        wildcard: '%QUERY%',
-                        filter: function(articles)
-                        {
-                            return $.map(articles, function(article)
-                            {
-                                return {
-                                    article_id : article.id,
-                                    article_title : article.title
-                                }
-                            })
-                        }
-                    }
-                })
-            articles.initialize();
-            $('#search').typeahead(
-                {
-                    hint:true
-                },
-                {
-                    name:'article',
-                    source: articles.ttAdapter(),
-                    display: 'article_title',
-                    templates: {
-                        suggestion: function(data)
-                        {
-                            return `
-                <a href='{{ path('article_index') }}//`data+article.id+`'>
-                  <strong>`+data.article_id+`</strong>
-                  <span>`+data.article_title+`</span>
-                </a>
-                `
-                        },
-                        footer: function (query)
-                        {
-                            return '<div class="text-center">More results about: '+ query.query +'</div>'
-                        }
-                    }
-                })
-        })
-    </script>
-
 {% endblock %}
 </body>
 </html>

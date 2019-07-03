@@ -1,1 +1,78 @@
 {{ form(form) }}
+
+{% block javascripts %}
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/1.2.1/bloodhound.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            let article_index = "{{ path('article_index') }}"
+            let articles = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: "{{ path('handle_search') }}/%QUERY%",
+                    wildcard: '%QUERY%',
+                    filter: function(articles) {
+                        return $.map(articles, function(article) {
+                            return {
+                                article_id: article.id,
+                                article_title: article.title
+                            }
+                        })
+                    }
+                }
+            })
+
+            articles.initialize()
+            .done(function() { console.log('ready to go!', articles); })
+            .fail(function(err) { console.log('err, something went wrong :(', err, articles); });
+
+            $('#form_search').typeahead({hint: true}, {
+                name: 'article',
+                source: articles.ttAdapter(),
+                display: 'article_title',
+                templates: {
+                    suggestion: function(data) {
+                        return `
+              <li class="list-group-item text-center">
+                <a href='${article_index}/${data.article_id}'>
+                  <strong>${data.article_id}</strong>
+                  <span>${data.article_title}</span>
+                </a>
+              </li>
+            `
+                    },
+                    footer: function(query) {
+                        return `
+              <li class="list-group-item text-center">
+                <a href="${article_index}?search=${query.query}">
+                  More results about: ${query.query}
+                </a>
+              </li>
+            `
+                    },
+                    notFound: function(query) {
+                        return `
+              <li class="list-group-item text-center">
+                No results about: ${query.query}
+              </li>
+            `
+                    },
+                    pending: function(query) {
+                        return `
+              <li class="list-group-item text-center">
+                Fetching results about: ${query.query}
+              </li>
+            `
+                    }
+                }
+            })
+        })
+    </script>
+
+{% endblock %}
